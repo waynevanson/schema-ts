@@ -26,29 +26,3 @@ export interface Entity<S, K extends keyof S> {
   readonly id: (a: S[K]) => string
   readonly resolvers: Resolvers<S, K>
 }
-
-type Model = { reviews: Review; users: User; posts: Post }
-
-type Result = Resolvers<Model, "users">
-
-// entities
-
-type Review = {
-  id: string
-  stars: 1 | 2 | 3 | 4 | 5
-  title: string
-  description: string
-}
-
-type Post = {
-  id: string
-  author: User
-  collaborators: Array<User>
-  reviews: Array<Review>
-}
-
-type User = {
-  id: string
-  friends: Array<User>
-  posts: Array<Post>
-}
